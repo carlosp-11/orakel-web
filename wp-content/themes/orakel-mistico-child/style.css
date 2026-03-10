@@ -1,0 +1,378 @@
+/*
+Theme Name: Orakel Místico Child
+Theme URI: https://example.com/
+Description: Child theme místico basado en Astra para el proyecto Orakel.
+Author: Carlo + IA
+Template: astra
+Version: 1.0.0
+Text Domain: orakel-mistico-child
+*/
+
+/* Variables de diseño místico */
+:root {
+  /* Colores base de marca */
+  --color-brand-primary: #5a1799;
+  --color-brand-text: #cca43b;
+
+  /* Fondo y superficies (alto contraste sobre oscuro púrpura) */
+  --color-bg-main: #050015;
+  --color-bg-alt: #09001f;
+  --color-surface: rgba(16, 9, 40, 0.95);
+  --color-border-glass: rgba(202, 164, 59, 0.45);
+
+  /* Acentos derivados */
+  --color-accent-1: #5a1799;
+  --color-accent-2: #cca43b;
+  --color-accent-3: #f5e1a4;
+
+  /* Texto */
+  --color-text-main: #f8f5ff;
+  --color-text-muted: #b9aee0;
+  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.7);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-pill: 999px;
+}
+
+body {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(90, 23, 153, 0.5), transparent 60%),
+    radial-gradient(circle at 100% 0%, rgba(204, 164, 59, 0.16), transparent 55%),
+    radial-gradient(circle at 50% 100%, rgba(22, 8, 54, 0.8), #050015 80%);
+  color: var(--color-text-main);
+}
+
+/* Tipografías base */
+body,
+button,
+input,
+select,
+textarea {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: 0.04em;
+}
+
+/* Marca / logotipo con Dancing Script (usada puntualmente para no perder legibilidad) */
+.orakel-brand,
+.orakel-hero-title {
+  font-family: "Dancing Script", system-ui, -apple-system, BlinkMacSystemFont,
+    "SF Pro Text", "Segoe UI", cursive;
+}
+
+/* Container global de páginas */
+.orakel-page-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 6rem;
+}
+
+/* Tarjetas glassmorphism reutilizables */
+.orakel-card-glass {
+  background: linear-gradient(
+    135deg,
+    rgba(36, 10, 79, 0.9),
+    rgba(12, 5, 40, 0.96)
+  );
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-glass);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.orakel-chip-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill);
+  background: radial-gradient(
+    circle at top left,
+    rgba(90, 23, 153, 0.6),
+    rgba(5, 0, 21, 0.98)
+  );
+  border: 1px solid rgba(204, 164, 59, 0.55);
+  color: var(--color-brand-text);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.orakel-cta-main {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 2.4rem;
+  border-radius: var(--radius-pill);
+  border: 0;
+  cursor: pointer;
+  background-image: linear-gradient(
+    120deg,
+    #cca43b,
+    #f5e1a4,
+    #5a1799
+  );
+  background-size: 200% 200%;
+  color: #050311;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 18px 60px rgba(90, 23, 153, 0.8);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-position 0.4s ease;
+}
+
+.orakel-cta-main:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 24px 80px rgba(90, 23, 153, 0.95);
+  background-position: 100% 0;
+}
+
+.orakel-cta-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.9rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(204, 164, 59, 0.4);
+  background: radial-gradient(
+    circle at top left,
+    rgba(90, 23, 153, 0.25),
+    rgba(5, 0, 21, 0.96)
+  );
+  color: var(--color-text-main);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.orakel-cta-ghost:hover {
+  border-color: rgba(204, 164, 59, 0.9);
+  transform: translateY(-1px);
+}
+
+/* Hero principal */
+.orakel-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+.orakel-hero-copy-eyebrow {
+  margin-bottom: 1rem;
+}
+
+.orakel-hero-title {
+  font-size: clamp(2.9rem, 4.2vw, 3.9rem);
+  line-height: 1.07;
+  margin: 0 0 1rem;
+  color: var(--color-brand-text);
+}
+
+.orakel-hero-subtitle {
+  max-width: 32rem;
+  color: var(--color-text-muted);
+  font-size: 1.02rem;
+}
+
+.orakel-hero-ctas {
+  margin-top: 2.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.orakel-hero-meta {
+  margin-top: 2.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem 2.3rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.orakel-hero-meta strong {
+  color: var(--color-brand-text);
+}
+
+.orakel-hero-visual {
+  position: relative;
+  min-height: 260px;
+}
+
+.orakel-hero-orb,
+.orakel-hero-card,
+.orakel-hero-glow {
+  position: absolute;
+  border-radius: 999px;
+  will-change: transform, opacity;
+}
+
+.orakel-hero-glow {
+  inset: 15% 5% 0;
+  background:
+    radial-gradient(circle at 20% 0, rgba(90, 23, 153, 0.95), transparent 60%),
+    radial-gradient(circle at 80% 10%, rgba(204, 164, 59, 0.7), transparent 55%),
+    radial-gradient(circle at 50% 100%, rgba(16, 5, 40, 0.9), transparent 65%);
+  opacity: 0.9;
+  filter: blur(18px);
+}
+
+.orakel-hero-card {
+  inset: 16% 10% 12%;
+  background: radial-gradient(
+    circle at top left,
+    rgba(255, 255, 255, 0.08),
+    rgba(10, 3, 30, 0.96)
+  );
+  border-radius: 32px;
+  border: 1px solid rgba(204, 164, 59, 0.5);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  overflow: hidden;
+}
+
+.orakel-hero-orb {
+  background: radial-gradient(
+    circle at 30% 10%,
+    rgba(255, 255, 255, 0.7),
+    rgba(90, 23, 153, 0.2)
+  );
+  box-shadow: 0 0 40px rgba(90, 23, 153, 0.9);
+}
+
+.orakel-hero-orb--primary {
+  width: 130px;
+  height: 130px;
+  top: 12%;
+  right: 6%;
+}
+
+.orakel-hero-orb--secondary {
+  width: 80px;
+  height: 80px;
+  bottom: 10%;
+  left: 4%;
+  box-shadow: 0 0 36px rgba(204, 164, 59, 0.9);
+}
+
+.orakel-hero-orb--tiny {
+  width: 32px;
+  height: 32px;
+  top: 50%;
+  left: 14%;
+  box-shadow: 0 0 25px rgba(245, 225, 164, 0.95);
+}
+
+/* Grids de secciones siguientes (cursos/noticias) - base */
+.orakel-section-shell {
+  margin-top: 5rem;
+}
+
+.orakel-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.orakel-section-heading h2 {
+  margin: 0;
+}
+
+.orakel-section-heading p {
+  margin: 0;
+  max-width: 26rem;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.orakel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.8rem;
+}
+
+.orakel-card-item {
+  position: relative;
+  padding: 1.6rem 1.6rem 1.5rem;
+  border-radius: var(--radius-md);
+  background: radial-gradient(
+    circle at top left,
+    rgba(255, 255, 255, 0.04),
+    rgba(9, 1, 32, 0.98)
+  );
+  border: 1px solid rgba(204, 164, 59, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+  transform-origin: center center;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.orakel-card-item:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
+  border-color: rgba(204, 164, 59, 0.9);
+}
+
+.orakel-card-item h3 {
+  margin-top: 0.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.orakel-card-item p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.orakel-card-item-footer {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .orakel-page-shell {
+    padding-top: 4.5rem;
+  }
+
+  .orakel-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.6rem;
+  }
+
+  .orakel-hero-visual {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .orakel-page-shell {
+    padding-inline: 1.25rem;
+  }
+
+  .orakel-hero-title {
+    font-size: 2.3rem;
+  }
+
+  .orakel-card-item {
+    padding: 1.4rem 1.3rem 1.3rem;
+  }
+}
+
