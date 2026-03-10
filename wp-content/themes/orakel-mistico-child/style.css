@@ -42,6 +42,26 @@ body {
   color: var(--color-text-main);
 }
 
+/* Forzamos fondo oscuro sobre Astra y contenedores */
+html,
+body {
+  background-color: var(--color-bg-main) !important;
+}
+
+.site,
+.site-content,
+.ast-container,
+.ast-page-builder-template,
+.ast-plain-container,
+.ast-single-post,
+.ast-separate-container {
+  background: transparent !important;
+}
+
+.site {
+  min-height: 100vh;
+}
+
 /* Tipografías base */
 body,
 button,

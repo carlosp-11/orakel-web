@@ -22,6 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
       ease: 'power3.out',
     });
 
+    // Parallax suave del glow del hero al hacer scroll.
+    const heroGlow = document.querySelector('.orakel-hero-glow');
+    if (heroGlow && !prefersReducedMotion) {
+      gsap.to(heroGlow, {
+        y: 80,
+        x: -40,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: hero,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.6,
+        },
+      });
+    }
+
     // Orbes flotando en bucle muy suave (no ligado al scroll).
     if (!prefersReducedMotion) {
       const orbs = document.querySelectorAll('.orakel-hero-orb');
@@ -45,9 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Aparición de secciones al hacer scroll.
   const sections = document.querySelectorAll('.orakel-section-shell');
   sections.forEach((section) => {
+    const isHeroAdjacent = section.classList.contains('orakel-section-cursos');
+
+    // Entrada de sección completa.
     gsap.from(section, {
       opacity: 0,
-      y: 60,
+      y: isHeroAdjacent ? 40 : 60,
       duration: 0.8,
       ease: 'power3.out',
       scrollTrigger: {
@@ -69,6 +88,22 @@ document.addEventListener('DOMContentLoaded', () => {
           trigger: section,
           start: 'top 78%',
         },
+      });
+    }
+
+    // Ligero parallax vertical para las tarjetas (sensación de profundidad).
+    if (cards.length) {
+      cards.forEach((card, i) => {
+        gsap.to(card, {
+          y: 20,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.5,
+          },
+        });
       });
     }
   });
